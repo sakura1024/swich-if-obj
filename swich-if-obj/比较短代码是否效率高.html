@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>function a1(add_step) {
+	switch(add_step) {
+		case 5:
+			add_level = 1;
+			break;
+		case 10:
+			add_level = 2;
+			break;
+		case 12:
+			add_level = 3;
+			break;
+		case 15:
+			add_level = 4;
+			break;
+		default:
+			add_level = 0;
+			break;
+	}
+	return add_level;
+}
+
+function a2(add_step) {
+	return {'5':1,'10':2,'12':3,'15':4}[add_step] || 0;
+}
+
+var a3_hash = {'5':1,'10':2,'12':3,'15':4};
+function a3(add_step){
+  return a3_hash[add_step] || 0;
+}
+var t0 = new Date();
+for(var i=0; i<40000; i++) a1(parseInt(Math.random()*10));
+document.write("使用switch用时："+((new Date())-t0)+"<br>");
+
+t0 = new Date();
+for(var i=0; i<40000; i++) a2(parseInt(Math.random()*10));
+document.write("使用对象用时："+((new Date())-t0)+"<br>");
+
+t0 = new Date();
+for(var i=0; i<40000; i++) a3(parseInt(Math.random()*10));
+document.write("使用优化对象用时："+((new Date())-t0)+"<br>");
+
+document.write("===========更改参数======<br>");
+
+var t0 = new Date();
+for(var i=0; i<40000; i++) a1(parseInt(Math.random()*15+10));
+document.write("使用switch用时："+((new Date())-t0)+"<br>");
+
+t0 = new Date();
+for(var i=0; i<40000; i++) a2(parseInt(Math.random()*15+10));
+document.write("使用对象用时："+((new Date())-t0)+"<br>");
+
+t0 = new Date();
+for(var i=0; i<40000; i++) a3(parseInt(Math.random()*15+10));
+document.write("使用优化对象用时："+((new Date())-t0)+"<br>");
+
+</script>
+
+	</body>
+</html>
